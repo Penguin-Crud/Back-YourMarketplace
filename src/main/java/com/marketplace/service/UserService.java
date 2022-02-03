@@ -1,2 +1,4 @@
-package com.marketplace.service;public interface UserService {
+package com.marketplace.service;
+
+public interface UserService {
 }

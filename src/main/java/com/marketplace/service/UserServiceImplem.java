@@ -1,2 +1,4 @@
-package com.marketplace.service;public class UserServiceImplem {
+package com.marketplace.service;
+
+public class UserServiceImplem implements UserService {
 }

@@ -1,2 +1,4 @@
-package com.marketplace.controler;public class MarketplaceControler {
+package com.marketplace.controler;
+
+public class MarketplaceControler {
 }
