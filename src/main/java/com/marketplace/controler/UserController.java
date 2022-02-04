@@ -1,7 +1,8 @@
 package com.marketplace.controler;
 
 
-import com.marketplace.service.UserService;
+import com.marketplace.model.User;
+import com.marketplace.service.UserCrudServicesImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,11 +12,13 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private UserCrudServicesImp userCrudServiceImplem;
 
     @PostMapping("/add")
     public String add(@RequestBody User user){
-        userService.saveUser(user);
-        return "New penguin is added";
+        userCrudServiceImplem.save(user);
+        return "New penguin added";
     }
+
+
 }
