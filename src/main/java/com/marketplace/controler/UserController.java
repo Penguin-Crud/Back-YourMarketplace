@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @Autowired
-    private UserCrudServicesImp userCrudServiceImplem;
+    private UserCrudServicesImp userCrudServiceImp;
 
     @PostMapping("/add")
     public String add(@RequestBody User user){
-        userCrudServiceImplem.save(user);
-        return "New penguin added";
+        userCrudServiceImp.save(user);
+        return "New User added";
     }
 
 
