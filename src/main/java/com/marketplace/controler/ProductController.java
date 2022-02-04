@@ -22,7 +22,7 @@ public class ProductController {
         return "New Product added";
     }
 
-    @GetMapping("/All")
+    @GetMapping("/all")
     public List<Product> getAll(){
         return productCrudServiceImp.getAll();
     }
