@@ -56,4 +56,21 @@ public class UserController {
         return addedProduct;
     }
 
+    @PutMapping("/{userId}/products/{prodId}")
+    public Product updateProduct(
+            @PathVariable("userId") int userId,
+            @PathVariable("prodId") int prodId,
+            @RequestBody Product product){
+
+        var user = userCrudServiceImp.get(userId);
+
+        product.setOwner(user);
+        var updatedProduct = productCrudServiceImp.update(product, prodId);
+
+        var ownerProducts = user.getProducts();
+        ownerProducts.add(updatedProduct);
+        user.setProducts(ownerProducts);
+        userCrudServiceImp.save(user);
+        return updatedProduct;
+    }
 }

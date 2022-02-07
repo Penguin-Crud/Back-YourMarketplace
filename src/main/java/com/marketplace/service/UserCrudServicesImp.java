@@ -27,4 +27,9 @@ public class UserCrudServicesImp implements GenericCrudService<User,Integer> {
         return userRepo.findById(id).get();
     }
 
+    @Override
+    public User update(User user, Integer id) {
+        return null;
+    }
+
 }

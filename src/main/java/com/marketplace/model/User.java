@@ -1,5 +1,7 @@
 package com.marketplace.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,6 +16,7 @@ public class User {
     private String email;
     private String avatarSeller;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "owner")
     private Set<Product> products = new HashSet<>();
 

@@ -28,4 +28,11 @@ public class ProductCrudServiceImp implements GenericCrudService<Product,Integer
         return productRepo.findById(id).get();
     }
 
+    @Override
+    public Product update(Product product, Integer id) {
+        if(!productRepo.existsById(id)) return null;
+        product.setId(id);
+        return productRepo.save(product);
+    }
+
 }
