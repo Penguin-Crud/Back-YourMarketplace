@@ -1,9 +1,8 @@
 package com.marketplace.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 
 @Entity
 public class Product {
@@ -16,6 +15,25 @@ public class Product {
     private String console;
     private int sellerId;
 
+    @JsonIgnore
+    @ManyToOne
+    private User owner;
+
+    public int getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(int sellerId) {
+        this.sellerId = sellerId;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
 
     public Product() {
     }

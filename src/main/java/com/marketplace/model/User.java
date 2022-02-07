@@ -1,6 +1,8 @@
 package com.marketplace.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -12,9 +14,23 @@ public class User {
     private String email;
     private String avatarSeller;
 
+    @OneToMany(mappedBy = "owner")
+    private Set<Product> products = new HashSet<>();
 
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
+    }
 
     public User() {
+    }
+
+    @Override
+    public String toString(){
+        return "User id:"+getId();
     }
 
     public int getId() {
