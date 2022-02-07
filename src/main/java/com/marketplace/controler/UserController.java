@@ -17,13 +17,13 @@ public class UserController {
     @Autowired
     private UserCrudServicesImp userCrudServiceImp;
 
-    @PostMapping("/add")
+    @PostMapping
     public String add(@RequestBody User user){
         userCrudServiceImp.save(user);
         return "New User added";
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public List<User> getAll(){
         return userCrudServiceImp.getAll();
     }
