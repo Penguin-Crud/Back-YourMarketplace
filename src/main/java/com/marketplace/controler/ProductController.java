@@ -9,22 +9,26 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/product")
+@RequestMapping("/products")
 @CrossOrigin
 public class ProductController {
 
     @Autowired
     private ProductCrudServiceImp productCrudServiceImp;
 
-    @PostMapping("/add")
-    public String add(@RequestBody Product product){
-        productCrudServiceImp.save(product);
-        return "New Product added";
+    @PostMapping
+    public Product add(@RequestBody Product product){
+        return productCrudServiceImp.save(product);
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public List<Product> getAll(){
         return productCrudServiceImp.getAll();
+    }
+
+    @GetMapping("/{id}")
+    public Product getById(@PathVariable int id){
+        return productCrudServiceImp.get(id);
     }
 
 
