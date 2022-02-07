@@ -1,10 +1,13 @@
 package com.marketplace.controler;
 
 
+
 import com.marketplace.model.User;
 import com.marketplace.service.UserCrudServicesImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -12,13 +15,17 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @Autowired
-    private UserCrudServicesImp userCrudServiceImplem;
+    private UserCrudServicesImp userCrudServiceImp;
 
     @PostMapping("/add")
     public String add(@RequestBody User user){
-        userCrudServiceImplem.save(user);
-        return "New penguin added";
+        userCrudServiceImp.save(user);
+        return "New User added";
     }
 
+    @GetMapping("/all")
+    public List<User> getAll(){
+        return userCrudServiceImp.getAll();
+    }
 
 }
