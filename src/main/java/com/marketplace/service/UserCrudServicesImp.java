@@ -24,7 +24,7 @@ public class UserCrudServicesImp implements GenericCrudService<User,Integer> {
 
     @Override
     public void deleteId(Integer id) {
-
+        userRepo.deleteById(id);
     }
 
     @Override

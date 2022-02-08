@@ -76,4 +76,6 @@ public class UserController {
         return updatedProduct;
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteId(@PathVariable Integer id) {userCrudServiceImp.deleteId(id);}
 }
