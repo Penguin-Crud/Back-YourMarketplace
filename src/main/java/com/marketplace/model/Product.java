@@ -10,6 +10,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+    private String img;
     private float price;
     private String description;
     private String console;
@@ -36,6 +37,22 @@ public class Product {
     }
 
     public Product() {
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public int getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(int sellerId) {
+        this.sellerId = sellerId;
     }
 
     public int getId() {
