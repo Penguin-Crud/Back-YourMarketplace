@@ -78,14 +78,4 @@ public class Product {
         this.console = console;
     }
 
-    public int getSeller() {
-        return sellerId;
-    }
-
-    public void setSeller(int seller) {
-        this.sellerId = seller;
-    }
-
-
-
 }

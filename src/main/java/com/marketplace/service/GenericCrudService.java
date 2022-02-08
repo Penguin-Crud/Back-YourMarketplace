@@ -12,6 +12,5 @@ public interface GenericCrudService<T, Pk extends Serializable> {
      T get(Pk id);
      T update(T t, Pk id);
      List<T> getAll();
-
-
+     void deleteId(Pk id);
 }
