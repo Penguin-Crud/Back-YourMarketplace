@@ -1,6 +1,10 @@
 package com.marketplace.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -12,9 +16,24 @@ public class User {
     private String email;
     private String avatarSeller;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "owner",  cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Product> products = new HashSet<>();
 
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
+    }
 
     public User() {
+    }
+
+    @Override
+    public String toString(){
+        return "User id:"+getId();
     }
 
     public int getId() {

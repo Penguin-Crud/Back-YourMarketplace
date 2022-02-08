@@ -23,8 +23,19 @@ public class UserCrudServicesImp implements GenericCrudService<User,Integer> {
     }
 
     @Override
+    public void deleteId(Integer id) {
+        userRepo.deleteById(id);
+    }
+
+    @Override
     public User get(Integer id){
         return userRepo.findById(id).get();
     }
+
+    @Override
+    public User update(User user, Integer id) {
+        return null;
+    }
+
 
 }

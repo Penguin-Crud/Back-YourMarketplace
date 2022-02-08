@@ -2,12 +2,15 @@ package com.marketplace.controler;
 
 
 
+import com.marketplace.model.Product;
 import com.marketplace.model.User;
+import com.marketplace.service.ProductCrudServiceImp;
 import com.marketplace.service.UserCrudServicesImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/users")
@@ -16,11 +19,17 @@ public class UserController {
 
     @Autowired
     private UserCrudServicesImp userCrudServiceImp;
+    @Autowired
+    private ProductCrudServiceImp productCrudServiceImp;
 
     @PostMapping
-    public String add(@RequestBody User user){
-        userCrudServiceImp.save(user);
-        return "New User added";
+    public User add(@RequestBody User user){
+        return userCrudServiceImp.save(user);
+    }
+  
+    @GetMapping("/{id}")
+    public User one(@PathVariable int id){
+        return userCrudServiceImp.get(id);
     }
 
     @GetMapping
@@ -28,4 +37,46 @@ public class UserController {
         return userCrudServiceImp.getAll();
     }
 
+    @GetMapping("/{id}/products")
+    public Set<Product> getProduct(@PathVariable int id){
+        var user = userCrudServiceImp.get(id);
+        return user.getProducts();
+    }
+
+    @PostMapping("/{id}/products")
+    public Product addProduct(@PathVariable int id, @RequestBody Product product){
+        var user = userCrudServiceImp.get(id);
+        product.setOwner(user);
+        var addedProduct = productCrudServiceImp.save(product);
+/*
+        var ownerProducts = user.getProducts();
+
+        ownerProducts.add(addedProduct);
+        user.setProducts(ownerProducts);
+        userCrudServiceImp.save(user);
+         */
+        return addedProduct;
+    }
+
+    @PutMapping("/{userId}/products/{prodId}")
+    public Product updateProduct(
+            @PathVariable("userId") int userId,
+            @PathVariable("prodId") int prodId,
+            @RequestBody Product product){
+
+        var user = userCrudServiceImp.get(userId);
+        product.setOwner(user);
+        var updatedProduct = productCrudServiceImp.update(product, prodId);
+
+        /*
+        var ownerProducts = user.getProducts();
+        ownerProducts.add(updatedProduct);
+        user.setProducts(ownerProducts);
+        userCrudServiceImp.save(user);
+         */
+        return updatedProduct;
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteId(@PathVariable Integer id) {userCrudServiceImp.deleteId(id);}
 }
