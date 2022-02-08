@@ -45,14 +45,15 @@ public class UserController {
     @PostMapping("/{id}/products")
     public Product addProduct(@PathVariable int id, @RequestBody Product product){
         var user = userCrudServiceImp.get(id);
-
         product.setOwner(user);
         var addedProduct = productCrudServiceImp.save(product);
+/*
         var ownerProducts = user.getProducts();
 
         ownerProducts.add(addedProduct);
         user.setProducts(ownerProducts);
         userCrudServiceImp.save(user);
+         */
         return addedProduct;
     }
 
@@ -63,14 +64,15 @@ public class UserController {
             @RequestBody Product product){
 
         var user = userCrudServiceImp.get(userId);
-
         product.setOwner(user);
         var updatedProduct = productCrudServiceImp.update(product, prodId);
 
+        /*
         var ownerProducts = user.getProducts();
         ownerProducts.add(updatedProduct);
         user.setProducts(ownerProducts);
         userCrudServiceImp.save(user);
+         */
         return updatedProduct;
     }
 }

@@ -15,7 +15,7 @@ public class Product {
     private String console;
     private int sellerId;
 
-    @JsonIgnore
+    //@JsonIgnore
     @ManyToOne
     private User owner;
 
