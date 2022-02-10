@@ -26,6 +26,7 @@ public class UserController {
     public User add(@RequestBody User user){
         return userCrudServiceImp.save(user);
     }
+  
     @GetMapping("/{id}")
     public User one(@PathVariable int id){
         return userCrudServiceImp.get(id);
@@ -75,4 +76,7 @@ public class UserController {
          */
         return updatedProduct;
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteId(@PathVariable Integer id) {userCrudServiceImp.deleteId(id);}
 }

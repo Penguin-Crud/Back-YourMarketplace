@@ -31,5 +31,7 @@ public class ProductController {
         return productCrudServiceImp.get(id);
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteId(@PathVariable int id) {productCrudServiceImp.deleteId(id); }
 
 }

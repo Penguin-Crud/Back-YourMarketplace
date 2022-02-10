@@ -17,7 +17,7 @@ public class User {
     private String avatarSeller;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "owner")//, cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "owner",  cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Product> products = new HashSet<>();
 
     public Set<Product> getProducts() {

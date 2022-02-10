@@ -24,6 +24,11 @@ public class ProductCrudServiceImp implements GenericCrudService<Product,Integer
     }
 
     @Override
+    public void deleteId(Integer id) {
+        productRepo.deleteById(id);
+    }
+
+    @Override
     public Product get(Integer id){
         return productRepo.findById(id).get();
     }
@@ -34,5 +39,6 @@ public class ProductCrudServiceImp implements GenericCrudService<Product,Integer
         product.setId(id);
         return productRepo.save(product);
     }
+
 
 }
