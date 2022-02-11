@@ -14,22 +14,24 @@ public class Product {
     private float price;
     private String description;
     private String console;
-    private int sellerId;
-
-
-    //@JsonIgnore
+      //@JsonIgnore
     @ManyToOne
     private User owner;
 
-    public Product(int id, String name, String img, float price, String description, String console, int sellerId) {
+    public Product() {
+
+    }
+
+    public Product(int id, String name, String img, float price, String description, String console) {
         this.id = id;
         this.name = name;
         this.img = img;
         this.price = price;
         this.description = description;
         this.console = console;
-        this.sellerId = sellerId;
     }
+
+
 
     public User getOwner() {
         return owner;
@@ -48,14 +50,6 @@ public class Product {
 
     public void setImg(String img) {
         this.img = img;
-    }
-
-    public int getSellerId() {
-        return sellerId;
-    }
-
-    public void setSellerId(int sellerId) {
-        this.sellerId = sellerId;
     }
 
     public int getId() {
